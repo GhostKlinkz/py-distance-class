@@ -8,37 +8,30 @@ class Distance:
     def __repr__(self) -> str:
         return f"Distance(km={self.km})"
 
-    def __add__(self, other: "Distance" | int | float) -> "Distance":
-        value = other.km if isinstance(other, Distance) else other
-        return Distance(self.km + value)
+    def __add__(self, other: "Distance" | int | float) -> float:
+        return self.km + other.km
 
-    def __iadd__(self, other: "Distance" | int | float) -> "Distance":
-        value = other.km if isinstance(other, Distance) else other
-        self.km += value
-        return self
+    def __iadd__(self, other: "Distance" | int | float) -> None:
+        self.km += other.km
+        return None
 
-    def __mul__(self, other: int | float) -> "Distance":
-        return Distance(self.km * other)
+    def __mul__(self, other: int | float) -> float:
+        return self.km * other
 
-    def __truediv__(self, other: int | float) -> "Distance":
-        return Distance(round(self.km / other, 2))
+    def __truediv__(self, other: int | float) -> float:
+        return self.km / other
 
     def __lt__(self, other: "Distance" | int | float) -> bool:
-        value = other.km if isinstance(other, Distance) else other
-        return self.km < value
+        return self.km < other.km
 
     def __gt__(self, other: "Distance" | int | float) -> bool:
-        value = other.km if isinstance(other, Distance) else other
-        return self.km > value
+        return self.km > other.km
 
     def __eq__(self, other: "Distance" | int | float) -> bool:
-        value = other.km if isinstance(other, Distance) else other
-        return self.km == value
+        return self.km == other.km
 
     def __le__(self, other: "Distance" | int | float) -> bool:
-        value = other.km if isinstance(other, Distance) else other
-        return self.km <= value
+        return self.km <= other.km
 
     def __ge__(self, other: "Distance" | int | float) -> bool:
-        value = other.km if isinstance(other, Distance) else other
-        return self.km >= value
+        return self.km >= other.km
